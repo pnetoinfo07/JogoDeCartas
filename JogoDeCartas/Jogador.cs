@@ -30,5 +30,13 @@ namespace JogoDeCartas
                 Console.WriteLine(exibicaoCartas);
             }
         }
+
+        public Jogador CriarJogadorPreenchido(int id)
+        {
+            Id = id;
+            Console.WriteLine("Digite seu nome");
+            Nome = Console.ReadLine();
+            return this;
+        }
     }
 }

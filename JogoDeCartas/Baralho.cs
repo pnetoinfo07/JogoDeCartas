@@ -36,11 +36,17 @@ namespace JogoDeCartas
         {
             for (int i = 0; i < NumeroCartas; i++)
             {
-                Carta c = baralhoList.FirstOrDefault();
-                j.Cartas.Add(c);
-                baralhoList.Remove(c);  
+                DistribuirProximaCarta(j);
             }
         }
+
+        public void DistribuirProximaCarta(Jogador j)
+        {
+            Carta c = baralhoList.FirstOrDefault();
+            j.Cartas.Add(c);
+            baralhoList.Remove(c);
+        }
+
         public void MostrarCartasBaralho()
         {
             foreach (Carta carta in baralhoList)
