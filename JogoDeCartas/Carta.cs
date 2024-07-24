@@ -12,29 +12,31 @@ namespace JogoDeCartas
         {
             Naipe = naipe;
             ConverterNumeroInteiroParaValorCarta(valor);
+            Valor = int.Parse(valor);
         }
 
-        public string Valor { get; set; }
+        public string Nome { get; set; }
         public string Naipe { get; set; }
+        public int Valor { get; set; }
 
         public void ConverterNumeroInteiroParaValorCarta(string num)
         {
             switch (num)
             {
                 case "1":
-                    Valor = "A";
+                    Nome = "A";
                     break;
                 case "11":
-                    Valor = "J";
+                    Nome = "J";
                     break;
                 case "12":
-                    Valor = "Q";
+                    Nome = "Q";
                     break;
                 case "13":
-                    Valor = "K";
+                    Nome = "K";
                     break;
                 default:
-                    Valor = num;
+                    Nome = num;
                     break;
             }
         }
@@ -60,7 +62,7 @@ namespace JogoDeCartas
 
         public string FormatarValorCartaExibicao()
         {
-            return $"{Valor} {ConverterNaipeParaSimbolo()}";
+            return $"{Nome} {ConverterNaipeParaSimbolo()}";
         }
     }
 }
