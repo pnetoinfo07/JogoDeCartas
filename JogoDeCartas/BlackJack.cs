@@ -11,18 +11,19 @@ namespace JogoDeCartas
         public Baralho BaralhoNovo { get; set; }
         public List<Jogador> Jogadores { get; set; }
 
-        public BlackJack() {
+        public BlackJack()
+        {
 
             BaralhoNovo = new Baralho(2);
             Jogadores = new List<Jogador>();
 
             Console.WriteLine("Quantos jogadores vão jogar?");
             int numJogadores = int.Parse(Console.ReadLine());
-            int id = Jogadores.Count == 0? 1 : Jogadores.Max(x => x.Id) + 1;    
-            
+            int id = Jogadores.Count == 0 ? 1 : Jogadores.Max(x => x.Id) + 1;
+
             for (int i = 0; i < numJogadores; i++)
             {
-                Jogador j =  new Jogador();
+                Jogador j = new Jogador();
                 j.CriarJogadorPreenchido(id);
                 Jogadores.Add(j);
             }
@@ -33,7 +34,7 @@ namespace JogoDeCartas
             IniciarRodada();
             foreach (Jogador j in Jogadores)
             {
-                Console.WriteLine($"{j.Nome} realize a sua jogada, sua mão é a abaixo" );
+                Console.WriteLine($"{j.Nome} realize a sua jogada, sua mão é a abaixo");
                 j.MostrarMaoJogador();
                 bool desejaOutraCarta = true;
                 while (desejaOutraCarta)
@@ -62,7 +63,7 @@ namespace JogoDeCartas
             Console.WriteLine("VENCEDOR DA RODADA");
             foreach (Jogador j in Jogadores.OrderByDescending(x => x.SomaValorDasCartas))
             {
-                if(ultimoValor == j.SomaValorDasCartas)
+                if (ultimoValor > 0 && ultimoValor != j.SomaValorDasCartas)
                 {
                     return;
                 }
@@ -72,7 +73,7 @@ namespace JogoDeCartas
                     Console.WriteLine($"Jogador Vencedor: {j.Nome} - Mão do Jogador:");
                     j.MostrarMaoJogador();
                     ultimoValor = j.SomaValorDasCartas;
-                }                
+                }
             }
         }
         private static bool PularJogadaCasoJogadorEstoure(Jogador j, bool desejaOutraCarta)
@@ -110,7 +111,7 @@ namespace JogoDeCartas
                 Console.WriteLine("Não entendi um comando digite um válido");
                 Console.WriteLine("Deseja receber mais uma carta?");
                 resposta = Console.ReadLine();
-            }            
+            }
         }
 
         private void IniciarRodada()

@@ -38,6 +38,13 @@ namespace JogoDeCartas
         public void SomarMaoJogador()
         {
             SomaValorDasCartas = Cartas.Sum(x => x.Valor);
+            foreach (Carta c in Cartas.Where(x => x.Nome.Equals("A")))
+            {
+                if (SomaValorDasCartas + 10 < 22)
+                {
+                    SomaValorDasCartas += 10;
+                }
+            }
         }
 
         public Jogador CriarJogadorPreenchido(int id)

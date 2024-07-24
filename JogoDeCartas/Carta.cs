@@ -12,7 +12,7 @@ namespace JogoDeCartas
         {
             Naipe = naipe;
             ConverterNumeroInteiroParaValorCarta(valor);
-            Valor = int.Parse(valor);
+            Valor = int.Parse(valor) > 10 ? 10 : int.Parse(valor);
         }
 
         public string Nome { get; set; }
